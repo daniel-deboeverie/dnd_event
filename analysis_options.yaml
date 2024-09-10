@@ -15,8 +15,6 @@ analyzer:
       build/**,
       lib/**.freezed.dart,
       lib/**.g.dart,
-      test/bdd/features/**_test.dart,
-      lib/graphql/**.graphql.dart,
     ]
   plugins:
     - custom_lint
