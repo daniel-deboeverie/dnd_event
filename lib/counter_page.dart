@@ -1,5 +1,7 @@
-import 'package:dnd_event/partials/adventurers_count.dart';
+import 'package:dnd_event/partials/adventurer_fight_scene.dart';
+import 'package:dnd_event/partials/background.dart';
 import 'package:dnd_event/partials/monster_count.dart';
+import 'package:dnd_event/partials/monster_fight_scene.dart';
 import 'package:flutter/material.dart';
 
 class CounterPage extends StatelessWidget {
@@ -8,14 +10,22 @@ class CounterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Row(
+      body: Stack(
         children: [
-          Expanded(child: MonsterCount()),
-          SizedBox(
-            width: 50,
-            child: Placeholder(),
+          Positioned.fill(child: Background()),
+          Positioned.fill(
+            child: Column(
+              children: [
+                Expanded(child: MonsterCount()),
+                Row(
+                  children: [
+                    Expanded(child: MonsterFightScene()),
+                    Expanded(child: AdventurerFightScene()),
+                  ],
+                ),
+              ],
+            ),
           ),
-          Expanded(child: AdventurersCount()),
         ],
       ),
     );

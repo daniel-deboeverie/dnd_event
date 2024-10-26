@@ -62,10 +62,10 @@ class AnimatedFightingGif extends HookWidget {
     );
 
     String getAssetName(Poses pose) => switch (pose) {
-          Poses.attack1 => 'assets/${assetKey}_attack_1.png',
-          Poses.attack2 => 'assets/${assetKey}_attack_2.png',
-          Poses.dying => 'assets/${assetKey}_dying.png',
-          Poses.dead => 'assets/${assetKey}_dead.png',
+          Poses.attack1 => 'assets/images/${assetKey}_attack_1.png',
+          Poses.attack2 => 'assets/images/${assetKey}_attack_2.png',
+          Poses.dying => 'assets/images/${assetKey}_dying.png',
+          Poses.dead => 'assets/images/${assetKey}_dead.png',
         };
 
     return AnimatedSwitcher(

@@ -1,6 +1,5 @@
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:dnd_event/hooks/use_get_monster_count.dart';
-import 'package:dnd_event/hooks/use_get_monsters_dead.dart';
-import 'package:dnd_event/partials/fight_scene.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -10,7 +9,6 @@ class MonsterCount extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final monsterCount = useGetMonsterCount(ref);
-    final monsterDead = useGetMonstersDead(ref);
 
     return Column(
       children: [
@@ -20,24 +18,27 @@ class MonsterCount extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Monsters',
-                  style: TextStyle(fontSize: 20),
+                  'MONSTERS',
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: 'FlameOn',
+                    color: Colors.red,
+                  ),
                 ),
-                Text(
-                  '$monsterCount',
-                  style: const TextStyle(fontSize: 30),
+                const SizedBox(height: 20),
+                AnimatedFlipCounter(
+                  duration: const Duration(milliseconds: 600),
+                  value: monsterCount,
+                  textStyle: const TextStyle(
+                    fontSize: 80,
+                    fontFamily: 'FlameOn',
+                    color: Colors.red,
+                    fontVariations: [FontVariation.opticalSize(40)],
+                  ),
                 ),
               ],
             ),
           ),
-        ),
-        FightScene(
-          assetKeyFirstFighter: '',
-          assetKeySecondFighter: '',
-          assetKeyThirdFighter: '',
-          assetKeyFourthFighter: '',
-          flipped: false,
-          dead: monsterDead,
         ),
       ],
     );
